@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUser extends Migration
+class CreateFcmuserapprovaldiskonTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateUser extends Migration
      */
     public function up()
     {
-        Schema::create('user', function (Blueprint $table) {
+        Schema::create('tblFcmUserApprovalDiskon', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama');
-            $table->string('token');
+            $table->string('name');
+            $table->longText('fcm_token')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ class CreateUser extends Migration
      */
     public function down()
     {
-       
+        Schema::dropIfExists('tblFcmUserApprovalDiskon');
     }
 }

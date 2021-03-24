@@ -30,7 +30,8 @@
 <script>
     const messaging = firebase.messaging();
     // Add the public key generated from the console here.
-    messaging.getToken({vapidKey: "BIh4LayXioqhtNXtXRhbYCn6vHPUgTB_iidpiwrk2jpSVrRahkHaDdAKDBH8DF7q1PTRdTz43jPTSp0HfreELTA"});
+    let vapidkey = '{{env('vapid')}}'
+    messaging.getToken({vapidKey: vapidkey});
     function sendTokenToServer(token){
         const user_id = '{{Auth::user()->id}}';
         // console.log(user_id)
@@ -53,7 +54,7 @@
     }
     // Get registration token. Initially this makes a network call, once retrieved
     // subsequent calls to getToken will return from cache.
-    messaging.getToken({vapidKey: 'BIh4LayXioqhtNXtXRhbYCn6vHPUgTB_iidpiwrk2jpSVrRahkHaDdAKDBH8DF7q1PTRdTz43jPTSp0HfreELTA'}).then((currentToken) => {
+    messaging.getToken({vapidKey: vapidkey}).then((currentToken) => {
     if (currentToken) {
         sendTokenToServer(currentToken);
         // updateUIForPushEnabled(currentToken);

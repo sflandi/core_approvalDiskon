@@ -15,9 +15,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $table = 'users';
+    protected $table = 'tblUsersapprovaldiskon';
     protected $fillable = [
-        'name', 'email', 'password', 'fcm_token',
+        'name', 'password', 'passwordText', 'fcm_token', 'access', 'cabang',
     ];
 
     /**
@@ -34,7 +34,4 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 }
